@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://dkmejsujsyww8"]
 
-[ext_resource type="Script" uid="uid://v4oalxarna8u" path="res://scenes/enemy_bullet.gd" id="1_d2qol"]
+[ext_resource type="Script" uid="uid://v4oalxarna8u" path="res://scenes/bullets/enemy_bullet.gd" id="1_d2qol"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d2qol"]
-size = Vector2(32, 32)
+size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx7rs"]
+size = Vector2(9.5, 9.5)
 
 [node name="EnemyBullet" type="Area2D" unique_id=529292232]
+collision_layer = 8
 script = ExtResource("1_d2qol")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=574963706]
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=560369656]
+position = Vector2(0, -4.7683716e-07)
 texture = SubResource("PlaceholderTexture2D_d2qol")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214939418]
 shape = SubResource("RectangleShape2D_qx7rs")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -11,6 +11,11 @@ const SPEED_FOCUSED = 150.0
 var is_focused = false
 #Cooldown entre balas para que tengan un espacio entre ellas
 var shoot_cooldown = 0.0
+
+
+var health = 5
+
+
 #-- MOVIMIENTO DEL JUGADOR --
 #Función que procesa las físicas ocurriendo cada frame (delta)
 func _physics_process(delta: float) -> void:
@@ -45,3 +50,7 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(bullet)
 		#Se reinicia el cooldown de la bala para que en los siguientes frames se resta por delta
 		shoot_cooldown = 0.1
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		queue_free()
