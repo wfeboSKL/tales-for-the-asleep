@@ -11,10 +11,8 @@ const SPEED_FOCUSED = 150.0
 var is_focused = false
 #Cooldown entre balas para que tengan un espacio entre ellas
 var shoot_cooldown = 0.0
-
-
+#Establecer la vida del jugador
 var health = 5
-
 
 #-- MOVIMIENTO DEL JUGADOR --
 #Función que procesa las físicas ocurriendo cada frame (delta)
