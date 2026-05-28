@@ -2,7 +2,7 @@
 #Conectar Script con CharacterBody2D
 extends CharacterBody2D
 #Pre-cargar la bala para evitar que el juego baje en funcionamiento
-const BULLET = preload("res://scenes/bullet.tscn")
+const BULLET = preload("res://scenes/bullets/bullet.tscn")
 #Definir la velocidad del jugador
 const SPEED = 300.0
 #Definir la velocidad del jugador en estado "focus" (estado de movimiento lento)
