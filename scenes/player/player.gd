@@ -17,8 +17,8 @@ var shoot_cooldown = 0.0
 var invincibility_timer = 0.0
 #Establecer la vida del jugador
 var health = 5
-#Cuando el jugador esté en la escena, crear health_label
-@onready var health_label = get_parent().get_node("HUD/HealthLabel")
+#Cuando el jugador esté en la escena, crear health_bar
+@onready var health_bar = get_parent().get_node("HUD/ProgressBar")
 @onready var score_label = get_parent().get_node("HUD/ScoreLabel")
 #-- MOVIMIENTO DEL JUGADOR --
 #Función que procesa las físicas ocurriendo cada frame (delta)
@@ -72,7 +72,7 @@ func take_damage(amount):
 		#Cada vez que se activa esta función, se le restará "amount" al jugador (su variable health)
 		health -= amount
 		#El texto que demuestra la vida del jugador mostrará ahora la vida actual (hay que cambiar esto)
-		health_label.text = "Vida: " + str(health)
+		health_bar.value = health
 		#Si la vida es menor o igual a 0, eliminar al jugador e instanciar escena de Game Over
 		if health <= 0:
 			GameData.score = 0.0

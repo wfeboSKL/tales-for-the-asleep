@@ -62,7 +62,7 @@ func take_damage(amount):
 	damageindicator_cooldown = 1.5
 	#Si la vida es menor a cero, eliminar por completo al enemigo
 	if health <= 0:
-		GameData.score += 100.0 + (randf_range(0,5)/2)
+		GameData.score += 100.0
 		queue_free()
 #Obtener el primer nodo del grupo "player" para seguirlo
 func _ready():
