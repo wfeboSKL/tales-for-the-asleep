@@ -2,7 +2,7 @@
 #Se extiende a AREA2D
 extends Area2D
 #Se define la velocidad de la bala enemiga
-const SPEED = 400.0
+const SPEED = 600.0
 
 #Función que realiza procesos cada frame
 func _process(delta: float) -> void:
