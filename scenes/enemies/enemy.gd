@@ -3,6 +3,7 @@
 extends CharacterBody2D
 #Se define su velocidad
 const SPEED = 150.0
+const SPEED_Y = 100.0
 #Se establece la vida inicial (la cual cambiará por impactos)
 var health = 3
 #Se establece el cooldown de la bala inicial
@@ -23,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = -SPEED
 	#Si jugador existe, moverse fluidamente hacia (actual, objetivo, velocidad)
 	if player:
-		velocity.y = move_toward(velocity.y, (player.position.y + y_offset - position.y), SPEED)
+		velocity.y = move_toward(velocity.y, clamp(player.position.y + y_offset - position.y, -SPEED_Y, SPEED_Y), SPEED_Y)
 	#Se hace el cálculo final del movimiento
 	move_and_slide()
 	
