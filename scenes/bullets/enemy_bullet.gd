@@ -17,5 +17,5 @@ func _process(delta: float) -> void:
 func _on_body_entered(body):
 	#Si el cuerpo que toca está en el grupo "Player" tomará 1 de daño y se eliminará
 	if body.is_in_group("Player"):
-		body.take_damage(1)
+		body.take_damage(10)
 		queue_free()
