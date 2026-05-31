@@ -13,14 +13,17 @@ var player = null
 const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
 #Se establece el cooldown del parpadeo del sprite
 var damageindicator_cooldown = 0.0
+#Cambios en la dirección del enemigo, un número entre aleatorio -30 y 30
+var y_offset = randf_range(-90, 90)
 
 #--MOVIMIENTO DEL ENEMIGO--
 #Función que calcula los procesos físicos cada frame
 func _physics_process(delta: float) -> void:
 	#Velocidad del enemigo será hacia la izquierda
 	velocity.x = -SPEED
+	#Si jugador existe, moverse fluidamente hacia (actual, objetivo, velocidad)
 	if player:
-		velocity.y = move_toward(velocity.y, (player.position.y - position.y), SPEED)
+		velocity.y = move_toward(velocity.y, (player.position.y + y_offset - position.y), SPEED)
 	#Se hace el cálculo final del movimiento
 	move_and_slide()
 	
@@ -37,8 +40,8 @@ func _physics_process(delta: float) -> void:
 		enemy_bullet.position = position
 		#Se crea la bala como un nodo hijo del enemigo
 		get_parent().add_child(enemy_bullet)
-		#Se reestablece el cooldown a 0.9
-		shoot_cooldown = 0.9
+		#Se reestablece el cooldown aleatoriamente entre 0.9 y 1.7
+		shoot_cooldown = randf_range(0.9,1.7)
 	
 	#Si el cooldown es mayor a 0, parpadea cada 0.05 segundos
 	if damageindicator_cooldown > 0:
@@ -61,4 +64,8 @@ func take_damage(amount):
 		queue_free()
 #Obtener el primer nodo del grupo "player" para seguirlo
 func _ready():
+	add_to_group("Enemy")
 	player = get_tree().get_first_node_in_group("Player")
+	collision_layer = 2
+	collision_mask = 1
+	

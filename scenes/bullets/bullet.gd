@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 #Función que indica cuando la bala entra en un objeto
 #Body se refiere a dicho objeto que este toca
 func _on_body_entered(body):
+	print("Cuerpo detectado: ", body.name, " Grupos: ", body.get_groups())
 	#Si el cuerpo que toca está en el grupo "Enemy"
 	if body.is_in_group("Enemy"):
 		#Tomará 1 de daño
