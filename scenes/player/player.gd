@@ -19,7 +19,7 @@ var invincibility_timer = 0.0
 var health = 5
 #Cuando el jugador esté en la escena, crear health_label
 @onready var health_label = get_parent().get_node("HUD/HealthLabel")
-
+@onready var score_label = get_parent().get_node("HUD/ScoreLabel")
 #-- MOVIMIENTO DEL JUGADOR --
 #Función que procesa las físicas ocurriendo cada frame (delta)
 func _physics_process(delta: float) -> void:
@@ -63,6 +63,8 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(bullet)
 		#Se reinicia el cooldown de la bala para que en los siguientes frames se resta por delta
 		shoot_cooldown = 0.1
+	
+	score_label.text = "Puntaje: " + str(GameData.score)
 #--TOMAR DAÑO--
 #Función que registra el daño tomado de un enemigo, amount es un valor específicado en enemy
 func take_damage(amount):
@@ -73,6 +75,7 @@ func take_damage(amount):
 		health_label.text = "Vida: " + str(health)
 		#Si la vida es menor o igual a 0, eliminar al jugador e instanciar escena de Game Over
 		if health <= 0:
+			GameData.score = 0.0
 			var game_over = GAME_OVER.instantiate()
 			get_parent().add_child(game_over)
 			queue_free()

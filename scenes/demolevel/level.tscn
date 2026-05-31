@@ -7,10 +7,11 @@
 [node name="Level" type="Node2D" unique_id=353482801]
 
 [node name="Player" parent="." unique_id=480144190 instance=ExtResource("1_kcedh")]
+position = Vector2(0, 320)
 collision_mask = 8
 
 [node name="Enemy" parent="." unique_id=2113979197 groups=["Enemy"] instance=ExtResource("2_g3hpl")]
-position = Vector2(800, 20)
+position = Vector2(800, 320)
 collision_layer = 2
 collision_mask = 4
 up_direction = Vector2(1, -1.2500001e-06)
@@ -21,6 +22,13 @@ up_direction = Vector2(1, -1.2500001e-06)
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Vida: 5"
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=2099791409]
+offset_left = 1.0
+offset_top = 19.0
+offset_right = 41.0
+offset_bottom = 42.0
+text = "Puntaje: 0.0"
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=684252353]
 script = ExtResource("3_d2nb1")
