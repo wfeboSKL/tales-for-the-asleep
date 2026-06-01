@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://hndi5xvpu8m3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjerq"]
+bg_color = Color(0.2086803, 1.5191269e-07, 2.4065375e-08, 1)
+
+[node name="Mewou" type="Control" unique_id=743778031]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1117813482]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BookshelfPanel" type="PanelContainer" parent="." unique_id=7015271]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rjerq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BookshelfPanel" unique_id=1589564995]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="BookshelfPanel/VBoxContainer" unique_id=1187911868]
+layout_mode = 2
+
+[node name="Chapter1Button" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=1163982157]
+layout_mode = 2
+
+[node name="Chapter2Button" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=1024758933]
+layout_mode = 2
+
+[node name="Chapter3Button" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=1963010779]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=452497751]
+layout_mode = 2
