@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	if GameData.enemies_killed >= 40 and GameData.current_wave != 3:
 		GameData.current_wave = 3
 		dialogue_box.start_dialogue([
-			["Morthalias:", "Good Job Desivinte! You're kicking ass out there!"],
+			["Morthalias:", "Good job Desivinte! You're kicking ass out there!"],
 			["Desivinte:", "..."],
 			["Desivinte:", "You should shut up already..."]
 			])
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 	elif GameData.enemies_killed >= 20 and GameData.current_wave == 1:
 		GameData.current_wave = 2
 		dialogue_box.start_dialogue([
-			["Morthalias:", "Oh no, a new wave of enemies!"],
+			["Morthalias:", "Oh no, a new wave of enemies! Long ass text as a test to see if it really autowarps if not I'll be really disappointed"],
 			["Morthalias:", "Incoming!!!!!"],
 			["Desivinte:", "..."],
 			["Desivinte:", "Sigh..."]
