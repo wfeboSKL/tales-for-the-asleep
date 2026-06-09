@@ -8,6 +8,8 @@ const ENEMYPATTERN = preload("res://scenes/enemies/enemy_pattern.tscn")
 var spawn_timer = 0.0
 #Le dice al timer a qué número tendrá que reiniciarse una vez llegue a 0
 var spawn_interval = 2.0
+#Traer los diálogos al nivel
+var dialogue_box = null
 
 #-- FUNCIÓN DE SPAWN DE ENEMIGOS --
 func spawn_enemy():
@@ -25,14 +27,28 @@ func spawn_enemy():
 
 #-- DIVERSOS PROCESOS --
 func _process(delta: float) -> void:
+	if dialogue_box == null:
+		dialogue_box = get_parent().get_node("DialogueBox")
+
+	
 	#Verificar en qué horda estamos según los enemigos eliminados
 	#Si se matan más de 40 enemigos y no es la horda 3, ahora es la horda 3
 	if GameData.enemies_killed >= 40 and GameData.current_wave != 3:
 		GameData.current_wave = 3
+		dialogue_box.start_dialogue([
+			["Morthalias:", "Good Job Desivinte! You're kicking ass out there!"],
+			["Desivinte:", "..."],
+			["Desivinte:", "You should shut up already..."]
+			])
 	#Si se matan más de 20 enemigos y es la horda 1, ahora es la horda 2
 	elif GameData.enemies_killed >= 20 and GameData.current_wave == 1:
 		GameData.current_wave = 2
-	
+		dialogue_box.start_dialogue([
+			["Morthalias:", "Oh no, a new wave of enemies!"],
+			["Morthalias:", "Incoming!!!!!"],
+			["Desivinte:", "..."],
+			["Desivinte:", "Sigh..."]
+			])
 	#Se resta delta del timer y si es menor a 0, spawnear un enemigo
 	spawn_timer -= delta
 	#Si timer menor que 0, spawnear un enemigo y regresar el intervalo

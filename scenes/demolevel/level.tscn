@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ktbnnh8fwh58" path="res://scenes/player/player.tscn" id="1_kcedh"]
 [ext_resource type="PackedScene" uid="uid://biqtee13nxlpm" path="res://scenes/enemies/enemy.tscn" id="2_g3hpl"]
 [ext_resource type="Script" uid="uid://bcbddn7bdv641" path="res://scenes/demolevel/enemy_spawner.gd" id="3_d2nb1"]
+[ext_resource type="PackedScene" uid="uid://ccvvxddts30js" path="res://scenes/ui/dialogue_box.tscn" id="6_s4sfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcedh"]
 bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
@@ -174,3 +175,5 @@ vertical_alignment = 1
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=684252353]
 script = ExtResource("3_d2nb1")
+
+[node name="DialogueBox" parent="." unique_id=301512362 instance=ExtResource("6_s4sfo")]
