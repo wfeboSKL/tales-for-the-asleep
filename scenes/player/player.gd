@@ -25,6 +25,16 @@ var melee_cooldown = 0.0
 #Cuando el jugador esté en la escena, crear health_bar
 @onready var health_bar = get_parent().get_node("HUD/ProgressBar")
 @onready var score_label = get_parent().get_node("HUD/ScoreLabel")
+
+#Referencia a la barra de cooldown del disparo
+@onready var shoot_skill_bar = get_parent().get_node("HUD/SkillBar/ShootSkill/ProgressBar")
+#Referencia al label de segundos restantes del disparo
+@onready var shoot_skill_label = get_parent().get_node("HUD/SkillBar/ShootSkill/Label")
+#Referencia a la barra de cooldown del melee
+@onready var melee_skill_bar = get_parent().get_node("HUD/SkillBar/MeleeSkill/ProgressBar")
+#Referencia al label de segundos restantes del melee
+@onready var melee_skill_label = get_parent().get_node("HUD/SkillBar/MeleeSkill/Label")
+
 #-- MOVIMIENTO DEL JUGADOR --
 #Función que procesa las físicas ocurriendo cada frame (delta)
 func _physics_process(delta: float) -> void:
@@ -73,8 +83,20 @@ func _physics_process(delta: float) -> void:
 		var melee = MELEE.instantiate()
 		melee.position = position
 		get_parent().add_child(melee)
-		melee_cooldown = 7.5
+		melee_cooldown = 10.0
 	score_label.text = "Puntaje: " + str(GameData.score)
+	#-- ACTUALIZAR HUD DE HABILIDADES --
+	#Actualizar barra de disparo (shoot_cooldown máximo es 0.1)
+	shoot_skill_bar.value = 1.0 - clamp(shoot_cooldown / 0.1, 0.0, 1.0)
+	#Actualizar barra de melee (melee_cooldown máximo es 10.0)
+	melee_skill_bar.value = 1.0 - clamp(melee_cooldown / 10.0, 0.0, 1.0)
+	#Mostrar segundos restantes del melee solo si está en cooldown
+	if melee_cooldown > 0:
+		melee_skill_label.text = str(snapped(melee_cooldown, 0.1))
+	else:
+		melee_skill_label.text = ""
+	
+	
 #--TOMAR DAÑO--
 #Función que registra el daño tomado de un enemigo, amount es un valor específicado en enemy
 func take_damage(amount):
