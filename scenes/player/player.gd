@@ -107,7 +107,7 @@ func take_damage(amount):
 		health_bar.value = health
 		#Si la vida es menor o igual a 0, eliminar al jugador e instanciar escena de Game Over
 		if health <= 0:
-			GameData.score = 0.0
+			GameData.reset()
 			var game_over = GAME_OVER.instantiate()
 			get_parent().add_child(game_over)
 			queue_free()
