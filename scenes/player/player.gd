@@ -5,6 +5,8 @@ extends CharacterBody2D
 const BULLET = preload("res://scenes/bullets/bullet.tscn")
 #Pre-cargar la escena de Game Over
 const GAME_OVER = preload("res://scenes/ui/game_over.tscn")
+#Pre-cargar el ataque melee
+const MELEE = preload("res://scenes/player/melee_attack.tscn")
 #Definir la velocidad del jugador
 const SPEED = 300.0
 #Definir la velocidad del jugador en estado "focus" (estado de movimiento lento)
@@ -17,6 +19,9 @@ var shoot_cooldown = 0.0
 var invincibility_timer = 0.0
 #Establecer la vida del jugador
 var health = 5
+#Cooldown de melee 
+var melee_cooldown = 0.0
+
 #Cuando el jugador esté en la escena, crear health_bar
 @onready var health_bar = get_parent().get_node("HUD/ProgressBar")
 @onready var score_label = get_parent().get_node("HUD/ScoreLabel")
@@ -63,7 +68,12 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(bullet)
 		#Se reinicia el cooldown de la bala para que en los siguientes frames se resta por delta
 		shoot_cooldown = 0.1
-	
+	melee_cooldown -= delta
+	if Input.is_action_just_pressed("melee") and melee_cooldown <= 0:
+		var melee = MELEE.instantiate()
+		melee.position = position
+		get_parent().add_child(melee)
+		melee_cooldown = 7.5
 	score_label.text = "Puntaje: " + str(GameData.score)
 #--TOMAR DAÑO--
 #Función que registra el daño tomado de un enemigo, amount es un valor específicado en enemy

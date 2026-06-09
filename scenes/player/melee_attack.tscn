@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://shmmimwoscpl"]
+
+[ext_resource type="Script" uid="uid://bgipel1nurtma" path="res://scenes/player/melee_attack.gd" id="1_0ijhy"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jeuvi"]
+points = PackedVector2Array(0, 0, 100, -80, 120, -30, 120, 30, 100, 80)
+
+[node name="MeleeAttack" type="Area2D" unique_id=15303095]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0ijhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519823883]
+shape = SubResource("ConvexPolygonShape2D_jeuvi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
