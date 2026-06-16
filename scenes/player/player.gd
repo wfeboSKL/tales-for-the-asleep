@@ -5,6 +5,8 @@ extends CharacterBody2D
 const BULLET = preload("res://scenes/bullets/bullet.tscn")
 #Pre-cargar la escena de Game Over
 const GAME_OVER = preload("res://scenes/ui/game_over.tscn")
+#Pre-cargar el ataque melee
+const MELEE = preload("res://scenes/player/melee_attack.tscn")
 #Definir la velocidad del jugador
 const SPEED = 300.0
 #Definir la velocidad del jugador en estado "focus" (estado de movimiento lento)
@@ -17,9 +19,22 @@ var shoot_cooldown = 0.0
 var invincibility_timer = 0.0
 #Establecer la vida del jugador
 var health = 5
+#Cooldown de melee 
+var melee_cooldown = 0.0
+
 #Cuando el jugador esté en la escena, crear health_bar
 @onready var health_bar = get_parent().get_node("HUD/ProgressBar")
 @onready var score_label = get_parent().get_node("HUD/ScoreLabel")
+
+#Referencia a la barra de cooldown del disparo
+@onready var shoot_skill_bar = get_parent().get_node("HUD/SkillBar/ShootSkill/ProgressBar")
+#Referencia al label de segundos restantes del disparo
+@onready var shoot_skill_label = get_parent().get_node("HUD/SkillBar/ShootSkill/Label")
+#Referencia a la barra de cooldown del melee
+@onready var melee_skill_bar = get_parent().get_node("HUD/SkillBar/MeleeSkill/ProgressBar")
+#Referencia al label de segundos restantes del melee
+@onready var melee_skill_label = get_parent().get_node("HUD/SkillBar/MeleeSkill/Label")
+
 #-- MOVIMIENTO DEL JUGADOR --
 #Función que procesa las físicas ocurriendo cada frame (delta)
 func _physics_process(delta: float) -> void:
@@ -63,8 +78,25 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(bullet)
 		#Se reinicia el cooldown de la bala para que en los siguientes frames se resta por delta
 		shoot_cooldown = 0.1
-	
+	melee_cooldown -= delta
+	if Input.is_action_just_pressed("melee") and melee_cooldown <= 0:
+		var melee = MELEE.instantiate()
+		melee.position = position
+		get_parent().add_child(melee)
+		melee_cooldown = 10.0
 	score_label.text = "Puntaje: " + str(GameData.score)
+	#-- ACTUALIZAR HUD DE HABILIDADES --
+	#Actualizar barra de disparo (shoot_cooldown máximo es 0.1)
+	shoot_skill_bar.value = 1.0 - clamp(shoot_cooldown / 0.1, 0.0, 1.0)
+	#Actualizar barra de melee (melee_cooldown máximo es 10.0)
+	melee_skill_bar.value = 1.0 - clamp(melee_cooldown / 10.0, 0.0, 1.0)
+	#Mostrar segundos restantes del melee solo si está en cooldown
+	if melee_cooldown > 0:
+		melee_skill_label.text = str(snapped(melee_cooldown, 0.1))
+	else:
+		melee_skill_label.text = ""
+	
+	
 #--TOMAR DAÑO--
 #Función que registra el daño tomado de un enemigo, amount es un valor específicado en enemy
 func take_damage(amount):
@@ -75,7 +107,7 @@ func take_damage(amount):
 		health_bar.value = health
 		#Si la vida es menor o igual a 0, eliminar al jugador e instanciar escena de Game Over
 		if health <= 0:
-			GameData.score = 0.0
+			GameData.reset()
 			var game_over = GAME_OVER.instantiate()
 			get_parent().add_child(game_over)
 			queue_free()

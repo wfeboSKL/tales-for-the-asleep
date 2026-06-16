@@ -2,12 +2,12 @@
 #Se extiende a AREA2D
 extends Area2D
 #Se define la velocidad de la bala enemiga
-const SPEED = 600.0
+const SPEED = 450.0
 
 #Función que realiza procesos cada frame
 func _process(delta: float) -> void:
 	#Dirección en X de la bala, derecha a izquierda
-	position.x -= SPEED*delta
+	position += Vector2.LEFT.rotated(rotation) * SPEED * delta
 	#Si la posición de la bala es menor a 0 (origen de la pantalla), se elimina
 	if position.x < 0:
 		queue_free()

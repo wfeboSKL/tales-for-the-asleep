@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://mthe4vlg6mhg"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=1257864463]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1953440923]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=1001744917]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=97910939]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="." unique_id=1579307544]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="." unique_id=119604616]
+offset_right = 8.0
+offset_bottom = 8.0

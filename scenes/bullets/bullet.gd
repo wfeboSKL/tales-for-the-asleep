@@ -3,11 +3,13 @@
 extends Area2D
 #Establecer velocidad de la bala
 const SPEED = 1050.0
+
 #-- MOVIMIENTO DE LA BALA --
 #Función que procesa cada frame la bala
 func _process(delta: float) -> void:
 	#Dirección en X de la bala
 	position.x += SPEED*delta
+	#Si sale de la pantalla, se borra
 	if position.x > get_viewport_rect().size.x:
 		queue_free()
 
