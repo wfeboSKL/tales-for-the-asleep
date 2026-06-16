@@ -3,7 +3,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjerq"]
 bg_color = Color(0.2086803, 1.5191269e-07, 2.4065375e-08, 1)
 
-[node name="Mewou" type="Control" unique_id=743778031]
+[node name="Main Menu" type="Control" unique_id=743778031]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,18 +24,26 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rjerq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BookshelfPanel" unique_id=1589564995]
 layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
 
 [node name="TitleLabel" type="Label" parent="BookshelfPanel/VBoxContainer" unique_id=1187911868]
 layout_mode = 2
 
 [node name="Chapter1Button" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=1163982157]
 layout_mode = 2
+text = " Capítulo I — El Comienzo
+"
 
 [node name="Chapter2Button" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=1024758933]
 layout_mode = 2
+text = "Capítulo II — El Misterio
+"
 
 [node name="Chapter3Button" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=1963010779]
 layout_mode = 2
+text = "Capítulo III — El Final"
 
 [node name="QuitButton" type="Button" parent="BookshelfPanel/VBoxContainer" unique_id=452497751]
 layout_mode = 2
+text = "Salir"
