@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://krk4f3bcxgr0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jys1"]
+
+[node name="XPOrb" type="Area2D" unique_id=1181106373]
+
+[node name="Sprite2D" type="ColorRect" parent="." unique_id=788990685]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.33333334, 1, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185398903]
+shape = SubResource("CircleShape2D_3jys1")

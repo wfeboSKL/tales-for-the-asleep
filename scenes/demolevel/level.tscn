@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bcbddn7bdv641" path="res://scenes/demolevel/enemy_spawner.gd" id="3_d2nb1"]
 [ext_resource type="Script" uid="uid://ckyrnlkddffwu" path="res://scenes/demolevel/hud.gd" id="5_ul7rm"]
 [ext_resource type="PackedScene" uid="uid://ccvvxddts30js" path="res://scenes/ui/dialogue_box.tscn" id="6_s4sfo"]
+[ext_resource type="Script" uid="uid://dbld1txf0rrot" path="res://scenes/demolevel/level_up_display.gd" id="8_6k8mo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcedh"]
 bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
@@ -206,3 +207,17 @@ vertical_alignment = 1
 script = ExtResource("3_d2nb1")
 
 [node name="DialogueBox" parent="." unique_id=301512362 instance=ExtResource("6_s4sfo")]
+
+[node name="LevelUpDisplay" type="CanvasLayer" parent="." unique_id=43281636]
+script = ExtResource("8_6k8mo")
+
+[node name="LevelUpLabel" type="Label" parent="LevelUpDisplay" unique_id=1249489938]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 4
+offset_left = 950.0
+offset_top = 290.0
+offset_right = 1132.0
+offset_bottom = 321.0
+theme_override_font_sizes/font_size = 22
+text = "¡Subiste de Nivel!"
+horizontal_alignment = 1

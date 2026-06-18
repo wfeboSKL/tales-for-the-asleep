@@ -7,7 +7,7 @@ const SPEED_Y = 100.0
 #Se establece la vida inicial (la cual cambiará por impactos)
 var health = 3
 #Se define cuanta experiencia dará
-var xp_value = 10
+var xp_value = 100
 #Se establece el cooldown de la bala inicial
 var shoot_cooldown = 0.0
 #Referencia al jugador, inicia vacía hasta que la escena esté lista
