@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 		#Esto añade la bala como un nodo hijo al Player
 		get_parent().add_child(bullet)
 		#Se reinicia el cooldown de la bala para que en los siguientes frames se resta por delta
-		shoot_cooldown = 0.1
+		shoot_cooldown = GameData.shoot_speed
 	melee_cooldown -= delta
 	if Input.is_action_just_pressed("melee") and melee_cooldown <= 0:
 		var melee = MELEE.instantiate()

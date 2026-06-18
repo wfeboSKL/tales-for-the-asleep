@@ -1,4 +1,5 @@
 extends CanvasLayer
+@onready var xp_label = $XPBar/XPLabel
 
 func _ready():
 	# Al iniciar, conectar la señal xp_changed de GameData a esta función
@@ -11,3 +12,4 @@ func _ready():
 func _on_xp_changed(current_xp, max_xp):
 	$XPBar.value = current_xp
 	$XPBar.max_value = max_xp
+	xp_label.text = "Nivel: " + str(GameData.player_level)

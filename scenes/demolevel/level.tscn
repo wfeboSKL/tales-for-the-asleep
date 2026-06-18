@@ -126,6 +126,12 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_56cx6")
 max_value = 50.0
 show_percentage = false
 
+[node name="XPLabel" type="Label" parent="HUD/XPBar" unique_id=1357468218]
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 23.0
+text = "Nivel: 1"
+
 [node name="SkillBar" type="HBoxContainer" parent="HUD" unique_id=395591379]
 anchors_preset = 7
 anchor_left = 0.5
