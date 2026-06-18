@@ -23,7 +23,7 @@ var health = 5
 var melee_cooldown = 0.0
 
 #Cuando el jugador esté en la escena, crear health_bar
-@onready var health_bar = get_parent().get_node("HUD/ProgressBar")
+@onready var health_bar = get_parent().get_node("HUD/HealthBar")
 @onready var score_label = get_parent().get_node("HUD/ScoreLabel")
 
 #Referencia a la barra de cooldown del disparo

@@ -32,8 +32,8 @@ func add_xp(amount):
 	if player_xp >= xp_to_next_level:
 		level_up()
 		# Se avisa a quien escuche que el XP cambió
-		xp_changed.emit(player_xp, xp_to_next_level)
 		print("Nivel: ",player_level)
+	xp_changed.emit(player_xp, xp_to_next_level)
 	print("XP recolectada: ",player_xp)
 
 # -- FUNCIÓN PARA RESETEAR LA INFORMACIÓN AL MORIR --
