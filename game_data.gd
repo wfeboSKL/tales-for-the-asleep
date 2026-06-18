@@ -11,7 +11,7 @@ var current_wave = 1
 # -- VARIABLES DE XP Y NIVEL --
 var player_xp = 0
 var player_level = 1
-var xp_to_next_level = 50
+var xp_to_next_level = 210
 
 #Velocidad de disparo del jugador
 var shoot_speed = 0.1
@@ -20,11 +20,11 @@ var shoot_speed = 0.1
 func level_up():
 	player_level += 1
 	player_xp = 0
-	xp_to_next_level = 50 * player_level
+	xp_to_next_level = 210*(25 * player_level)
 	# Se avisa que el XP cambió tras subir de nivel
 	xp_changed.emit(player_xp, xp_to_next_level)
 	# Mejorar velocidad de disparo con cada nivel, mínimo 0.05
-	shoot_speed = clamp(shoot_speed - 0.005, 0.05, 0.1)
+	shoot_speed = clamp(shoot_speed - 0.005, 0.08, 0.1)
 	print("Shoot rate: ",shoot_speed)
 
 # -- SEÑAL DE XP --
@@ -49,5 +49,5 @@ func reset():
 	current_wave = 1
 	player_xp = 0
 	player_level = 1
-	xp_to_next_level = 50
+	xp_to_next_level = 210
 	shoot_speed = 0.1
