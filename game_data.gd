@@ -18,6 +18,23 @@ func level_up():
 	player_level += 1
 	player_xp = 0
 	xp_to_next_level = 50 * player_level
+	# Se avisa que el XP cambió tras subir de nivel
+	xp_changed.emit(player_xp, xp_to_next_level)
+
+# -- SEÑAL DE XP --
+signal xp_changed(current_xp, max_xp)
+
+# -- AGREGAR XP AL JUGADOR --
+func add_xp(amount):
+	# Se suma el XP recibido
+	player_xp += amount
+	# Si el XP actual alcanza o supera el máximo, subir de nivel
+	if player_xp >= xp_to_next_level:
+		level_up()
+		# Se avisa a quien escuche que el XP cambió
+		xp_changed.emit(player_xp, xp_to_next_level)
+		print("Nivel: ",player_level)
+	print("XP recolectada: ",player_xp)
 
 # -- FUNCIÓN PARA RESETEAR LA INFORMACIÓN AL MORIR --
 func reset():

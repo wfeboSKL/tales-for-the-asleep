@@ -84,7 +84,7 @@ func take_damage(amount):
 		#Se suma 175 al puntaje y 1 al contador de kills
 		GameData.score += 175.0
 		GameData.enemies_killed += 1
-		GameData.player_xp += xp_value
+		GameData.add_xp(xp_value)
 		queue_free()
 
 func _ready():

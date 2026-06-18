@@ -7,7 +7,7 @@ const SPEED_Y = 100.0
 #Se establece la vida inicial (la cual cambiará por impactos)
 var health = 3
 #Se define cuanta experiencia dará
-var xp_value = 25
+var xp_value = 10
 #Se establece el cooldown de la bala inicial
 var shoot_cooldown = 0.0
 #Referencia al jugador, inicia vacía hasta que la escena esté lista
@@ -70,8 +70,7 @@ func take_damage(amount):
 		#Se actualiza el puntaje y la cantidad de kills
 		GameData.score += 100.0
 		GameData.enemies_killed += 1
-		GameData.player_xp += xp_value
-		print(GameData.player_xp)
+		GameData.add_xp(xp_value)
 		queue_free()
 
 #-- OBTENER PLAYER --
