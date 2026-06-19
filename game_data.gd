@@ -31,7 +31,6 @@ func level_up():
 	level_up_occurred.emit(player_level)
 	# Mejorar velocidad de disparo con cada nivel, mínimo 0.05
 	shoot_speed = clamp(shoot_speed - 0.005, 0.08, 0.1)
-	print("Shoot rate: ",shoot_speed)
 
 # -- AGREGAR XP AL JUGADOR --
 func add_xp(amount):
@@ -41,9 +40,7 @@ func add_xp(amount):
 	if player_xp >= xp_to_next_level:
 		level_up()
 		# Se avisa a quien escuche que el XP cambió
-		print("Nivel: ",player_level)
 	xp_changed.emit(player_xp, xp_to_next_level)
-	print("XP recolectada: ",player_xp)
 
 # -- FUNCIÓN PARA RESETEAR LA INFORMACIÓN AL MORIR --
 func reset():

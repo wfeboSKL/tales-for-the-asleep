@@ -7,7 +7,7 @@ const SPEED_Y = 100.0
 #Se establece la vida inicial (la cual cambiará por impactos)
 var health = 3
 #Se define cuanta experiencia dará
-var xp_value = 100
+var xp_value = 10
 #Se establece el cooldown de la bala inicial
 var shoot_cooldown = 0.0
 #Referencia al jugador, inicia vacía hasta que la escena esté lista
@@ -19,6 +19,9 @@ var y_offset = randf_range(-90, 90)
 #-- PRELOADS --
 #Se "precarga" la escena de la bala enemiga
 const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
+
+const XP_ORB = preload("res://scenes/particles/xp_orb.tscn")
+
 
 #Función que calcula los procesos físicos cada frame
 func _physics_process(delta: float) -> void:
@@ -67,10 +70,14 @@ func take_damage(amount):
 	damageindicator_cooldown = 1.5
 	#Si la vida es menor a cero, eliminar por completo al enemigo
 	if health <= 0:
+		var count = 5
+		for i in count:
+			var xp_orb = XP_ORB.instantiate()
+			xp_orb.position = position
+			get_parent().add_child(xp_orb)
 		#Se actualiza el puntaje y la cantidad de kills
 		GameData.score += 100.0
 		GameData.enemies_killed += 1
-		GameData.add_xp(xp_value)
 		queue_free()
 
 #-- OBTENER PLAYER --

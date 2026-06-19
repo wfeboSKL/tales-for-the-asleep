@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://shmmimwoscpl"]
 
 [ext_resource type="Script" uid="uid://bgipel1nurtma" path="res://scenes/player/melee_attack.gd" id="1_0ijhy"]
+[ext_resource type="Texture2D" uid="uid://s20elf0iti57" path="res://Sprites/bullets/Fist.png" id="2_jeuvi"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jeuvi"]
 points = PackedVector2Array(0, 0, 100, -80, 120, -30, 120, 30, 100, 80)
@@ -12,5 +13,10 @@ script = ExtResource("1_0ijhy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519823883]
 shape = SubResource("ConvexPolygonShape2D_jeuvi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=69754834]
+position = Vector2(93, 0)
+scale = Vector2(2.1018517, 1.8571429)
+texture = ExtResource("2_jeuvi")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

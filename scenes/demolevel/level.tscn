@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://xeqaplemmgjl"]
 
 [ext_resource type="Script" uid="uid://vv3otjijyyfi" path="res://scenes/demolevel/level.gd" id="1_d2nb1"]
-[ext_resource type="Texture2D" uid="uid://xdvreqo2hhgo" path="res://scenes/demolevel/level basic.png" id="1_g3hpl"]
 [ext_resource type="PackedScene" uid="uid://ktbnnh8fwh58" path="res://scenes/player/player.tscn" id="1_kcedh"]
+[ext_resource type="Texture2D" uid="uid://c7wp6ksf78dhe" path="res://Sprites/background/image.jpg" id="2_6k8mo"]
 [ext_resource type="PackedScene" uid="uid://biqtee13nxlpm" path="res://scenes/enemies/enemy.tscn" id="2_g3hpl"]
 [ext_resource type="Script" uid="uid://bcbddn7bdv641" path="res://scenes/demolevel/enemy_spawner.gd" id="3_d2nb1"]
+[ext_resource type="Texture2D" uid="uid://io51jwt07241" path="res://Sprites/background/ev1JYAAAABklEQVQDAPpSbo1Y9t7HAAAAAElFTkSuQmCC.png" id="3_vsapc"]
 [ext_resource type="Script" uid="uid://ckyrnlkddffwu" path="res://scenes/demolevel/hud.gd" id="5_ul7rm"]
 [ext_resource type="PackedScene" uid="uid://ccvvxddts30js" path="res://scenes/ui/dialogue_box.tscn" id="6_s4sfo"]
 [ext_resource type="Script" uid="uid://dbld1txf0rrot" path="res://scenes/demolevel/level_up_display.gd" id="8_6k8mo"]
@@ -52,15 +53,28 @@ grow_vertical = 2
 color = Color(0.039215688, 0.039215688, 0.078431375, 1)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=268002703]
-motion_scale = Vector2(1, 0)
-motion_mirroring = Vector2(200, 0)
+motion_mirroring = Vector2(1000, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=2144375548]
 texture_repeat = 2
 position = Vector2(576, 324)
-texture = ExtResource("1_g3hpl")
+texture = ExtResource("2_6k8mo")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer2" unique_id=86897615]
+offset_right = 1509.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.6509804)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=797123027]
+motion_offset = Vector2(100, 0)
+motion_mirroring = Vector2(6700, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=98783621]
+position = Vector2(2088, 1182)
+scale = Vector2(6.248121, 4.3364415)
+texture = ExtResource("3_vsapc")
 
 [node name="Player" parent="." unique_id=480144190 instance=ExtResource("1_kcedh")]
 position = Vector2(0, 320)

@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://3utnp6kontnb"]
 
 [ext_resource type="Script" uid="uid://c42hg75kvcpdk" path="res://scenes/bullets/bullet.gd" id="1_mkf8s"]
+[ext_resource type="Texture2D" uid="uid://baulef0lv7equ" path="res://Sprites/bullets/BaseBullet.png" id="2_5f1na"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1aey"]
-size = Vector2(8, 8)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mkf8s"]
 size = Vector2(8, 8)
 
 [node name="Bullet" type="Area2D" unique_id=1209773944]
@@ -17,6 +15,6 @@ script = ExtResource("1_mkf8s")
 shape = SubResource("RectangleShape2D_h1aey")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=842618955]
-texture = SubResource("PlaceholderTexture2D_mkf8s")
+texture = ExtResource("2_5f1na")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

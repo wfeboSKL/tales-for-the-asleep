@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://ktbnnh8fwh58"]
 
 [ext_resource type="Script" uid="uid://d3v58uhkqfjha" path="res://scenes/player/player.gd" id="1_3vyb7"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3vyb7"]
-size = Vector2(32, 32)
+[ext_resource type="Texture2D" uid="uid://dayff4mjg7xii" path="res://Sprites/Desivinte.png" id="2_dovo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
-size = Vector2(11, 11)
+size = Vector2(15.75, 28.875)
 
 [node name="Player" type="CharacterBody2D" unique_id=480144190 groups=["Player"]]
 script = ExtResource("1_3vyb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1553321050]
-texture = SubResource("PlaceholderTexture2D_3vyb7")
+position = Vector2(-5, 18)
+scale = Vector2(0.81, 0.81)
+texture = ExtResource("2_dovo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377164170]
+position = Vector2(-8.125, 10.5625)
 shape = SubResource("RectangleShape2D_u8vuu")

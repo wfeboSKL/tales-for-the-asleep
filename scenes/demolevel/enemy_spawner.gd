@@ -36,18 +36,21 @@ func _process(delta: float) -> void:
 	if GameData.enemies_killed >= 40 and GameData.current_wave != 3:
 		GameData.current_wave = 3
 		dialogue_box.start_dialogue([
-			["Morthalias:", "Good job Desivinte! You're kicking ass out there!"],
+			["Morthalias:", "¡Buen trabajo Desivinte!"],
+			["Morthalias:", "Ya lo más duro pasó"],
 			["Desivinte:", "..."],
-			["Desivinte:", "You should shut up already..."]
+			["Desivinte:", "Por qué no te callas de una vez..."],
+			["Morthalias:", "¡Lo siento!"]
 			])
 	#Si se matan más de 20 enemigos y es la horda 1, ahora es la horda 2
 	elif GameData.enemies_killed >= 20 and GameData.current_wave == 1:
 		GameData.current_wave = 2
 		dialogue_box.start_dialogue([
-			["Morthalias:", "Oh no, a new wave of enemies!"],
-			["Morthalias:", "Incoming!!!!!"],
+			["Morthalias:", "¡Oh no!"],
+			["Morthalias:", "¡Parece que vienen enemigos más fuertes!"],
+			["Morthalias:", "¡Preparate!!!!!!"],
 			["Desivinte:", "..."],
-			["Desivinte:", "Sigh..."]
+			["Desivinte:", "Ugh..."]
 			])
 	#Se resta delta del timer y si es menor a 0, spawnear un enemigo
 	spawn_timer -= delta

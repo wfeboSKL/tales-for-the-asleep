@@ -17,6 +17,8 @@ var damageindicator_cooldown = 0.0
 #Pre-cargar balas
 const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
 
+const XP_ORB = preload("res://scenes/particles/xp_orb.tscn")
+
 #-- EXPORTAR VARIABLES PARA MOVIMIENTO ONDULATORIO --
 #Se define su velocidad
 @export var speed: float = 200.0
@@ -24,6 +26,9 @@ const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
 @export var frequency: float = 5.0
 #Se define su movimiento en y
 @export var amplitude: float = 150.0
+var angle = randf_range(0, TAU)  # TAU es 2*PI, o sea, "toda la vuelta"
+var direction = Vector2(cos(angle), sin(angle))
+var explosion_strength = 1.0
 
 #-- ESTABLECER FUNCIONES DE PATRONES DE DISPARO --
 func shoot_pattern():
@@ -81,10 +86,14 @@ func take_damage(amount):
 	damageindicator_cooldown = 1.5
 	#Si la vida es menor a cero, eliminar por completo al enemigo
 	if health <= 0:
+		var count = 7
+		for i in count:
+			var xp_orb = XP_ORB.instantiate()
+			xp_orb.position = position
+			get_parent().add_child(xp_orb)
 		#Se suma 175 al puntaje y 1 al contador de kills
 		GameData.score += 175.0
 		GameData.enemies_killed += 1
-		GameData.add_xp(xp_value)
 		queue_free()
 
 func _ready():

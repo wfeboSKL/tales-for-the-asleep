@@ -5,7 +5,7 @@ extends Area2D
 #Variable que funciona como cooldown
 var melee_cooldown = 0.0
 
-const DURATION = 0.15
+const DURATION = 0.25
 #Se asegura que al inicio, el cooldown sea de 0.15
 func _ready():
 	melee_cooldown = DURATION
