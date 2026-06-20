@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dcjohwkgxlmjj"]
+
+[ext_resource type="Script" uid="uid://5e0yg7l5uedf" path="res://scenes/enemies/enemy_sentry.gd" id="1_bjjst"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6irt1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6irt1"]
+radius = 22.292004
+
+[node name="enemy_sentry" type="CharacterBody2D" unique_id=148646031]
+position = Vector2(400, 0)
+script = ExtResource("1_bjjst")
+
+[node name="Node2D" type="Sprite2D" parent="." unique_id=844041649]
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(35, 42)
+skew = -0.2617994
+texture = SubResource("PlaceholderTexture2D_6irt1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2086864322]
+skew = -0.2617994
+shape = SubResource("CircleShape2D_6irt1")

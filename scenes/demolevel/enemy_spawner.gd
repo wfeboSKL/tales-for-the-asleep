@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 			["Morthalias:", "¡Lo siento!"]
 			])
 	#Si se matan más de 20 enemigos y es la horda 1, ahora es la horda 2
-	elif GameData.enemies_killed >= 2 and GameData.current_wave == 1:
+	elif GameData.enemies_killed >= 20 and GameData.current_wave == 1:
 		GameData.current_wave = 2
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Oh no!"],
