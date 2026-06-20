@@ -1,13 +1,12 @@
 #--VARIABLES DEL ENEMIGO CON PATRÓN--
 #Se extiende a CharacterBody2D
 extends "res://scripts/enemies/enemy_base.gd"
-
 #Tiempo para el movimiento sinusoidal
 var time: float = 0.0
-
 #Pre-cargar balas
 const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
-
+var patterns_in_burst = 0
+const BURST_SIZE = 2
 #-- EXPORTAR VARIABLES PARA MOVIMIENTO ONDULATORIO --
 #Se define su velocidad
 @export var speed: float = 200.0
@@ -15,7 +14,6 @@ const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
 @export var frequency: float = 5.0
 #Se define su movimiento en y
 @export var amplitude: float = 150.0
-
 #-- ESTABLECER FUNCIONES DE PATRONES DE DISPARO --
 func shoot_pattern():
 	#Cantidad de balas, ángulo de extensión y cambios entre los ángulos
@@ -31,7 +29,7 @@ func shoot_pattern():
 		bullet.position = position
 		bullet.rotation = deg_to_rad(angle)
 		get_parent().add_child(bullet)
-
+	
 #-- DIVERSOS PROCESOS --
 func _physics_process(delta: float) -> void:
 	#Tiempo acelera con delta
@@ -39,10 +37,19 @@ func _physics_process(delta: float) -> void:
 	#Indicador de daño (su cooldown) y el cooldown de disparo disminuyen con delta
 	damageindicator_cooldown -= delta
 	shoot_cooldown -= delta
-	#Si el cooldown es menor o igual a 0, instanciar una bala y el cooldown cambia entre [1.5-2.5]
+	#Si el cooldown es menor o igual a 0, instanciar un abanico de balas
 	if shoot_cooldown <= 0:
+		# Se dispara el abanico completo
 		shoot_pattern()
-		shoot_cooldown = randf_range(1.5, 2.5)
+		# Se suma un disparo a la ráfaga actual
+		patterns_in_burst += 1
+		if patterns_in_burst < BURST_SIZE:
+			# Todavía falta el segundo disparo de la ráfaga, cooldown corto
+			shoot_cooldown = 0.6
+		else:
+			# Se completó la ráfaga, cooldown largo y se reinicia el contador
+			shoot_cooldown = randf_range(2.7,3.5)
+			patterns_in_burst = 0
 	
 	# Offset del movimiento ondulatorio en X (debido a que el tiempo aumenta, progresará a la izquierda)
 	var wave_offset = sin(time * frequency) * amplitude
