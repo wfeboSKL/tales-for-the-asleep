@@ -8,7 +8,7 @@ const ENEMYSENTRY = preload("res://scenes/enemies/enemy_sentry.tscn")
 #Variable que funciona como cooldown
 var spawn_timer = 0.0
 #Le dice al timer a qué número tendrá que reiniciarse una vez llegue a 0
-var spawn_interval = randi_range(2.5,5)
+var spawn_interval = randi_range(2,5)
 #Traer los diálogos al nivel
 var dialogue_box = null
 
@@ -34,17 +34,19 @@ func _process(delta: float) -> void:
 	
 	#Verificar en qué horda estamos según los enemigos eliminados
 	#Si se matan más de 40 enemigos y no es la horda 3, ahora es la horda 3
-	if GameData.enemies_killed >= 4 and GameData.current_wave != 3:
+	if GameData.enemies_killed >= 2 and GameData.current_wave != 3:
 		GameData.current_wave = 3
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Buen trabajo Desivinte!"],
 			["Morthalias:", "Ya lo más duro pasó"],
 			["Desivinte:", "..."],
 			["Desivinte:", "Por qué no te callas de una vez..."],
-			["Morthalias:", "¡Lo siento!"]
+			["Morthalias:", "¡Lo siento!"],
+			["Morthalias:", "Solo..."],
+			["Morthalias:", "Hago lo que puedo..."]
 			])
 	#Si se matan más de 20 enemigos y es la horda 1, ahora es la horda 2
-	elif GameData.enemies_killed >= 2 and GameData.current_wave == 1:
+	elif GameData.enemies_killed >= 1 and GameData.current_wave == 1:
 		GameData.current_wave = 2
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Oh no!"],
@@ -87,11 +89,11 @@ func spawn_pattern_enemy():
 		enemy.position.y = randf_range(70, get_tree().root.size.y - 70)
 		get_parent().add_child(enemy)
 func spawn_sentry_enemy():
-	var count = randi_range(1,2)
+	var count = randi_range(1, 2)
 	for i in count:
 		var enemy = ENEMYSENTRY.instantiate()
 		# Posición X dentro de la pantalla (no desde la derecha, se queda fijo ahí)
-		enemy.position.x = randf_range(200,1100)
+		enemy.position.x = randf_range(500,1100)
 		# Aparece arriba de la pantalla, fuera de vista
 		enemy.position.y = 0
 		get_parent().add_child(enemy)

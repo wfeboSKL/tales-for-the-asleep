@@ -6,8 +6,8 @@ var home_position = Vector2.ZERO
 var move_direction = -1
 var movement_cooldown = 0.0
 var shoot_pause = 0.0
-const SPEED = 140.0
-const SPEED_Y = 150.0
+const SPEED = -70.0
+const SPEED_Y = 220.0
 #Se "precarga" la escena de la bala enemiga
 const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
 
@@ -28,14 +28,16 @@ func shoot_pattern():
 func _physics_process(delta: float) -> void:
 	if not in_home:
 		# Todavía no llegó, sigue cayendo
-		velocity.y = move_toward(velocity.y, home_position.y, SPEED_Y)
+		velocity.y = move_toward(velocity.y, home_position.y, SPEED_Y * delta)
 		if position.distance_to(home_position) < 5:
 			in_home = true
 	else:
+		position.y = clamp(position.y, home_position.y - 180, home_position.y + 180)
 		# Ya está en home, oscila para siempre (sin volver a chequear distancia)
 		if is_shooting:
 			shoot_pause -= delta
 			velocity.y = 0
+			velocity.x = SPEED
 			if shoot_pause <= 0:
 				is_shooting = false
 				move_direction *= -1
@@ -51,7 +53,6 @@ func _physics_process(delta: float) -> void:
 			
 				
 	move_and_slide()
-	position.y = clamp(position.y, home_position.y - 180, home_position.y + 180)
 	#-- EFECTOS VISUALES --
 	update_damage_blink(delta)
 
@@ -59,7 +60,6 @@ func _ready():
 	super()
 	health = 7
 	xp_value = 55
-	# Guardamos la posición X actual, pero con una Y específica como destino "home"
 	home_position = Vector2(position.x, 324)
 
 func on_death():
