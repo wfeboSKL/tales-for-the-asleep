@@ -10,6 +10,7 @@ var player = null
 # XP que otorga al ser recolectado, con pequeña variación aleatoria
 var xp_orb_value = randf_range(0.9, 1.1)*2
 
+
 # -- VARIABLES DE LA EXPLOSIÓN INICIAL --
 # Dirección aleatoria del "salto" al nacer
 var explosion_direction = Vector2.ZERO

@@ -1,23 +1,12 @@
 #--VARIABLES DEL ENEMIGO CON PATRÓN--
 #Se extiende a CharacterBody2D
-extends CharacterBody2D
-#La vida inicial
-var health = 7
-#Se define cuanta experiencia dará
-var xp_value = 25
+extends "res://scripts/enemies/enemy_base.gd"
 
-#El cooldown de disparo
-var shoot_cooldown = 0.0
 #Tiempo para el movimiento sinusoidal
 var time: float = 0.0
-#Referencia al jugador, inicia vacía hasta que la escena esté lista
-var player = null
-#Se establece el cooldown del parpadeo del sprite
-var damageindicator_cooldown = 0.0
+
 #Pre-cargar balas
 const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
-
-const XP_ORB = preload("res://scenes/particles/xp_orb.tscn")
 
 #-- EXPORTAR VARIABLES PARA MOVIMIENTO ONDULATORIO --
 #Se define su velocidad
@@ -26,9 +15,7 @@ const XP_ORB = preload("res://scenes/particles/xp_orb.tscn")
 @export var frequency: float = 5.0
 #Se define su movimiento en y
 @export var amplitude: float = 150.0
-var angle = randf_range(0, TAU)  # TAU es 2*PI, o sea, "toda la vuelta"
-var direction = Vector2(cos(angle), sin(angle))
-var explosion_strength = 1.0
+
 
 #-- ESTABLECER FUNCIONES DE PATRONES DE DISPARO --
 func shoot_pattern():
@@ -67,37 +54,21 @@ func _physics_process(delta: float) -> void:
 	# Calculo de movimiento final
 	move_and_slide()
 	
-	#Si el cooldown es mayor a 0, parpadea cada 0.05 segundos
-	if damageindicator_cooldown > 0:
-		$Sprite2D.visible = fmod(damageindicator_cooldown, 0.2) > 0.05
-	else:
-		#De lo contrario, será siempre visible
-		$Sprite2D.visible = true
+	#-- EFECTOS VISUALES --
+	update_damage_blink(delta)
+	check_offscreen()
 	
-	#Si sale de la pantalla, se elimina
-	if position.x < -50:
-		queue_free()
-
 #-- TOMAR DAÑO --
-func take_damage(amount):
-	#A la vida, se le restará amount
-	health -= amount
-	#Se reinicia el cooldown
-	damageindicator_cooldown = 1.5
-	#Si la vida es menor a cero, eliminar por completo al enemigo
-	if health <= 0:
-		var count = 7
-		for i in count:
-			var xp_orb = XP_ORB.instantiate()
-			xp_orb.position = position
-			get_parent().add_child(xp_orb)
-		#Se suma 175 al puntaje y 1 al contador de kills
-		GameData.score += 175.0
-		GameData.enemies_killed += 1
-		queue_free()
-
+func on_death():
+	var count = 7
+	for i in count:
+		var xp_orb = XP_ORB.instantiate()
+		xp_orb.position = position
+		get_parent().add_child(xp_orb)
+		#Se suma 175 al puntaje
+	GameData.score += 175.0
+	
 func _ready():
-	add_to_group("Enemy")
-	player = get_tree().get_first_node_in_group("Player")
-	collision_layer = 2
-	collision_mask = 1
+	super()  # ejecuta primero el _ready() del padre (busca jugador, etc.)
+	health = 7
+	xp_value = 25
