@@ -27,13 +27,13 @@ var melee_cooldown = 0.0
 @onready var score_label = get_parent().get_node("HUD/ScoreLabel")
 
 #Referencia a la barra de cooldown del disparo
-@onready var shoot_skill_bar = get_parent().get_node("HUD/SkillBar/ShootSkill/ProgressBar")
+@onready var shoot_skill_bar = get_parent().get_node("HUD/BottomBar/Sections/RightSection/SkillBar/ShootSkill/CooldownBar")
 #Referencia al label de segundos restantes del disparo
-@onready var shoot_skill_label = get_parent().get_node("HUD/SkillBar/ShootSkill/Label")
+@onready var shoot_skill_label = get_parent().get_node("HUD/BottomBar/Sections/RightSection/SkillBar/ShootSkill/CooldownLabel")
 #Referencia a la barra de cooldown del melee
-@onready var melee_skill_bar = get_parent().get_node("HUD/SkillBar/MeleeSkill/ProgressBar")
+@onready var melee_skill_bar = get_parent().get_node("HUD/BottomBar/Sections/RightSection/SkillBar/MeleeSkill/CooldownBar")
 #Referencia al label de segundos restantes del melee
-@onready var melee_skill_label = get_parent().get_node("HUD/SkillBar/MeleeSkill/Label")
+@onready var melee_skill_label = get_parent().get_node("HUD/BottomBar/Sections/RightSection/SkillBar/MeleeSkill/CooldownLabel")
 
 #-- MOVIMIENTO DEL JUGADOR --
 #Función que procesa las físicas ocurriendo cada frame (delta)

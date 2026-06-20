@@ -9,18 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ccvvxddts30js" path="res://scenes/ui/dialogue_box.tscn" id="6_s4sfo"]
 [ext_resource type="Script" uid="uid://dbld1txf0rrot" path="res://scenes/demolevel/level_up_display.gd" id="8_6k8mo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2nb1"]
-bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4sfo"]
-bg_color = Color(0.7058824, 0.3137255, 0.078431375, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ul7rm"]
-bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k8mo"]
-bg_color = Color(0.5882353, 0.078431375, 0.15686275, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcedh"]
 bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
 
@@ -32,6 +20,18 @@ bg_color = Color(0.022069808, 0.10281511, 0.097520195, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56cx6"]
 bg_color = Color(0.33946556, 0.76015407, 0.7597866, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2nb1"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4sfo"]
+bg_color = Color(0.7058824, 0.3137255, 0.078431375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ul7rm"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k8mo"]
+bg_color = Color(0.5882353, 0.078431375, 0.15686275, 1)
 
 [node name="Level" type="Node2D" unique_id=353482801]
 script = ExtResource("1_d2nb1")
@@ -91,76 +91,6 @@ offset_right = 91.0
 offset_bottom = -54.0
 grow_vertical = 0
 text = "Puntaje: 0.0"
-
-[node name="SkillBar" type="HBoxContainer" parent="HUD" unique_id=395591379]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -66.0
-offset_top = -64.0
-offset_right = 66.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ShootSkill" type="Panel" parent="HUD/SkillBar" unique_id=655401672]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="HUD/SkillBar/ShootSkill" unique_id=306404406]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_d2nb1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_s4sfo")
-max_value = 1.0
-value = 1.0
-fill_mode = 3
-show_percentage = false
-
-[node name="Label" type="Label" parent="HUD/SkillBar/ShootSkill" unique_id=1259074617]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MeleeSkill" type="Panel" parent="HUD/SkillBar" unique_id=1681556019]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="HUD/SkillBar/MeleeSkill" unique_id=1381090867]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_ul7rm")
-theme_override_styles/fill = SubResource("StyleBoxFlat_6k8mo")
-max_value = 1.0
-value = 1.0
-fill_mode = 3
-show_percentage = false
-
-[node name="Label" type="Label" parent="HUD/SkillBar/MeleeSkill" unique_id=1111200835]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BottomBar" type="PanelContainer" parent="HUD" unique_id=585263769]
 custom_minimum_size = Vector2(0, 140)
@@ -229,6 +159,105 @@ size_flags_stretch_ratio = 2.0
 [node name="RightSection" type="PanelContainer" parent="HUD/BottomBar/Sections" unique_id=1319524404]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="SkillBar" type="HBoxContainer" parent="HUD/BottomBar/Sections/RightSection" unique_id=395591379]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ShootSkill" type="Panel" parent="HUD/BottomBar/Sections/RightSection/SkillBar" unique_id=655401672]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="CooldownBar" type="ProgressBar" parent="HUD/BottomBar/Sections/RightSection/SkillBar/ShootSkill" unique_id=306404406]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_d2nb1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s4sfo")
+max_value = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="CooldownLabel" type="Label" parent="HUD/BottomBar/Sections/RightSection/SkillBar/ShootSkill" unique_id=1259074617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeleeSkill" type="Panel" parent="HUD/BottomBar/Sections/RightSection/SkillBar" unique_id=1681556019]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="CooldownBar" type="ProgressBar" parent="HUD/BottomBar/Sections/RightSection/SkillBar/MeleeSkill" unique_id=1381090867]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ul7rm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6k8mo")
+max_value = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="CooldownLabel" type="Label" parent="HUD/BottomBar/Sections/RightSection/SkillBar/MeleeSkill" unique_id=1111200835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EmtpySkill1" type="Panel" parent="HUD/BottomBar/Sections/RightSection/SkillBar" unique_id=1466407660]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="CooldownBar" type="ProgressBar" parent="HUD/BottomBar/Sections/RightSection/SkillBar/EmtpySkill1" unique_id=1278689929]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_d2nb1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s4sfo")
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="EmtpySkill2" type="Panel" parent="HUD/BottomBar/Sections/RightSection/SkillBar" unique_id=862224153]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="CooldownBar" type="ProgressBar" parent="HUD/BottomBar/Sections/RightSection/SkillBar/EmtpySkill2" unique_id=797964943]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_d2nb1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s4sfo")
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=684252353]
 script = ExtResource("3_d2nb1")

@@ -2,8 +2,8 @@
 #Se extiende a CharacterBody2D
 extends "res://scripts/enemies/enemy_base.gd"
 #Se define su velocidad
-const SPEED = 150.0
-const SPEED_Y = 100.0
+const SPEED = 190.0
+const SPEED_Y = 110.0
 const BURST_SIZE = 3
 var bullets_in_burst = 0
 
