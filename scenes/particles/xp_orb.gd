@@ -35,11 +35,9 @@ func _physics_process(delta: float) -> void:
 		explosion_strength = move_toward(explosion_strength, 0.0, delta * 2.0)
 		# El objetivo combina la posición del jugador con el offset de explosión
 		var target = player.position + (explosion_direction * 40 * explosion_strength)
-		
 		# Si está muy cerca del jugador, acelera para entrar derecho sin orbitar
 		var distance = position.distance_to(player.position)
 		var current_speed = SPEED_CLOSE if distance < 60 else SPEED
-		
 		position = position.move_toward(target, current_speed * delta)
 
 func _on_body_entered(body):

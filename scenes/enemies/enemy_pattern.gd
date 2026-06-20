@@ -16,7 +16,6 @@ const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
 #Se define su movimiento en y
 @export var amplitude: float = 150.0
 
-
 #-- ESTABLECER FUNCIONES DE PATRONES DE DISPARO --
 func shoot_pattern():
 	#Cantidad de balas, ángulo de extensión y cambios entre los ángulos
@@ -64,7 +63,7 @@ func on_death():
 	for i in count:
 		var xp_orb = XP_ORB.instantiate()
 		xp_orb.position = position
-		get_parent().add_child(xp_orb)
+		get_parent().call_deferred("add_child", xp_orb)
 		#Se suma 175 al puntaje
 	GameData.score += 175.0
 	

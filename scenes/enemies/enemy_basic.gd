@@ -4,6 +4,8 @@ extends "res://scripts/enemies/enemy_base.gd"
 #Se define su velocidad
 const SPEED = 150.0
 const SPEED_Y = 100.0
+const BURST_SIZE = 3
+var bullets_in_burst = 0
 
 #Cambios en la dirección del enemigo, un número entre aleatorio -30 y 30
 var y_offset = randf_range(-90, 90)
@@ -27,14 +29,19 @@ func _physics_process(delta: float) -> void:
 	shoot_cooldown -= delta
 	#Si el cooldown es menor o igual a 0
 	if shoot_cooldown <= 0:
-		#La variable bala crea (o instancia) la escena ENEMY_BULLET
+		# Se dispara una bala
 		var enemy_bullet = ENEMY_BULLET.instantiate()
-		#La bala iniciará a partir de la posición del enemigo
 		enemy_bullet.position = position
-		#Se crea la bala como un nodo hijo del enemigo
 		get_parent().add_child(enemy_bullet)
-		#Se reestablece el cooldown aleatoriamente entre 0.9 y 1.7
-		shoot_cooldown = randf_range(0.9,1.7)
+		# Se suma una bala disparada a la ráfaga actual
+		bullets_in_burst += 1
+		if bullets_in_burst < BURST_SIZE:
+			# Todavía faltan balas en esta ráfaga, cooldown corto
+			shoot_cooldown = 0.3
+		else:
+			# Se completó la ráfaga, cooldown largo y se reinicia el contador
+			shoot_cooldown = randf_range(1.5, 2.3)
+			bullets_in_burst = 0
 		
 	#-- EFECTOS VISUALES --
 	update_damage_blink(delta)
@@ -47,6 +54,6 @@ func on_death():
 	for i in count:
 		var xp_orb = XP_ORB.instantiate()
 		xp_orb.position = position
-		get_parent().add_child(xp_orb)
+		get_parent().call_deferred("add_child", xp_orb)
 		#Se actualiza el puntaje y la cantidad de kills
 	GameData.score += 100.0

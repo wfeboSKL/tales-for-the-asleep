@@ -2,12 +2,12 @@
 #Se extiende al nodo
 extends Node
 #Se precarga los enemigos
-const ENEMY = preload("res://scenes/enemies/enemy.tscn")
+const ENEMY = preload("res://scenes/enemies/enemy_basic.tscn")
 const ENEMYPATTERN = preload("res://scenes/enemies/enemy_pattern.tscn")
 #Variable que funciona como cooldown
 var spawn_timer = 0.0
 #Le dice al timer a qué número tendrá que reiniciarse una vez llegue a 0
-var spawn_interval = 2.0
+var spawn_interval = randi_range(2.5,5)
 #Traer los diálogos al nivel
 var dialogue_box = null
 
@@ -24,6 +24,7 @@ func spawn_enemy():
 		3:
 			#Horda 3: jefe (por ahora igual que básico)
 			spawn_basic_enemy()
+			spawn_pattern_enemy()
 
 #-- DIVERSOS PROCESOS --
 func _process(delta: float) -> void:
