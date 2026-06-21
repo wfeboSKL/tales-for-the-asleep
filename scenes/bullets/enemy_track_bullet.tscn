@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cub1m48f7otds"]
+
+[ext_resource type="Script" uid="uid://buykf0a7daw3u" path="res://scenes/bullets/enemy_track_bullet.gd" id="1_f3y0k"]
+[ext_resource type="Texture2D" uid="uid://gosyqnpyl6ti" path="res://Sprites/Bullets/EnemyTrackBullet.png" id="1_lxp4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3y0k"]
+size = Vector2(31, 19)
+
+[node name="EnemyTrackBullet" type="Area2D" unique_id=1353805213]
+script = ExtResource("1_f3y0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=873435525]
+texture = ExtResource("1_lxp4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=285318425]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_f3y0k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

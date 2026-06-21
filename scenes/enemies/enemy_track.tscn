@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jx4x3hnbxoj0"]
+
+[ext_resource type="Script" uid="uid://d38woqeytrcnt" path="res://scenes/enemies/enemy_track.gd" id="1_3uyx5"]
+[ext_resource type="Texture2D" uid="uid://oxg5ot8d8psb" path="res://Sprites/Gameplay/TrackHelnierz.png" id="1_woxuf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uyx5"]
+size = Vector2(39, 99)
+
+[node name="EnemyTrack" type="CharacterBody2D" unique_id=1376543161]
+script = ExtResource("1_3uyx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1292872688]
+texture = ExtResource("1_woxuf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1277100234]
+position = Vector2(9.5, 0.5)
+shape = SubResource("RectangleShape2D_3uyx5")

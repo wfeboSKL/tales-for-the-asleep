@@ -6,7 +6,7 @@ extends Node
 var score = 0
 # Variables que registran kills y horda actual
 var enemies_killed = 0
-var current_wave = 1
+var current_wave = 0
 
 # -- VARIABLES DE XP Y NIVEL --
 var player_xp = 0

@@ -34,11 +34,11 @@ func _process(delta: float) -> void:
 	
 	#Verificar en qué horda estamos según los enemigos eliminados
 	#Si se matan más de 40 enemigos y no es la horda 3, ahora es la horda 3
-	if GameData.enemies_killed >= 55 and GameData.current_wave != 3:
+	if GameData.enemies_killed >= 75 and GameData.current_wave != 3:
 		GameData.current_wave = 3
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Buen trabajo Desivinte!"],
-			["Morthalias:", "Ya lo más duro pasó"],
+			["Morthalias:", "Sigue matando y verás que llegarás bastante lejos"],
 			["Desivinte:", "..."],
 			["Desivinte:", "Por qué no te callas de una vez..."],
 			["Morthalias:", "¡Lo siento!"],
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			["Morthalias:", "Hago lo que puedo..."]
 			])
 	#Si se matan más de 20 enemigos y es la horda 1, ahora es la horda 2
-	elif GameData.enemies_killed >= 35 and GameData.current_wave == 1:
+	elif GameData.enemies_killed >= 40 and GameData.current_wave == 1:
 		GameData.current_wave = 2
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Oh no!"],
@@ -55,6 +55,19 @@ func _process(delta: float) -> void:
 			["Desivinte:", "..."],
 			["Desivinte:", "Ugh..."]
 			])
+	elif GameData.current_wave == 0:
+		GameData.current_wave = 1
+		dialogue_box.start_dialogue([
+			["Desivinte:", "Finalmente, llegamos."],
+			["Morthalias:", "¡Sí!"],
+			["Desivinte:", "Ahora hay que ver dónde está Hail the Priestess..."],
+			["Desivinte:", "Realmente puede estar en cualquier lugar."],
+			["Desivinte:", "..."],
+			["Morthalias:", "¿Sucede algo?"],
+			["Desivinte:", "Olvidalo."],
+			["Morthalias:", "Si necesitas algo, ¡aquí estaré!"]
+			])
+		pass
 	#Se resta delta del timer y si es menor a 0, spawnear un enemigo
 	spawn_timer -= delta
 	#Si timer menor que 0, spawnear un enemigo y regresar el intervalo
