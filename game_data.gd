@@ -19,6 +19,9 @@ var shoot_speed = 0.1
 var bullet_count = 1
 
 var has_diagonal_shot = false
+
+var has_homing_diagonal = false
+
 # -- SEÑAL DE XP --
 signal xp_changed(current_xp, max_xp)
 # -- SEÑAL DE SUBIDA DE NIVEL
@@ -33,7 +36,7 @@ func level_up():
 	xp_changed.emit(player_xp, xp_to_next_level)
 	level_up_occurred.emit(player_level)
 	# Mejorar velocidad de disparo con cada nivel, mínimo 0.05
-	shoot_speed = clamp(shoot_speed - 0.005, 0.08, 0.1)
+	shoot_speed = clamp(shoot_speed - 0.001, 0.08, 0.1)
 	match player_level:
 		3:
 			bullet_count = 2
@@ -41,6 +44,10 @@ func level_up():
 			bullet_count = 3
 		15:
 			has_diagonal_shot = true
+			bullet_count = 1
+		20:
+			has_homing_diagonal = true
+			bullet_count = 2
 
 # -- AGREGAR XP AL JUGADOR --
 func add_xp(amount):

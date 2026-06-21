@@ -116,3 +116,13 @@ func shoot_bullets():
 		var offset_y = (i - (bullet_count - 1) / 2.0) * 18
 		bullet.position = position + Vector2(0, offset_y)
 		get_parent().add_child(bullet)
+		if GameData.has_diagonal_shot:
+			var diagonal_up = BULLET.instantiate()
+			diagonal_up.position = position
+			diagonal_up.rotation = deg_to_rad(-10)
+			get_parent().add_child(diagonal_up)
+	
+			var diagonal_down = BULLET.instantiate()
+			diagonal_down.position = position
+			diagonal_down.rotation = deg_to_rad(10)
+			get_parent().add_child(diagonal_down)

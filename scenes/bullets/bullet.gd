@@ -8,7 +8,7 @@ const SPEED = 1050.0
 #Función que procesa cada frame la bala
 func _process(delta: float) -> void:
 	#Dirección en X de la bala
-	position.x += SPEED*delta
+	position += Vector2.RIGHT.rotated(rotation) * SPEED * delta
 	#Si sale de la pantalla, se borra
 	if position.x > get_viewport_rect().size.x:
 		queue_free()
