@@ -1,21 +1,18 @@
 [gd_scene format=3 uid="uid://1r7rh6xjkag5"]
 
 [ext_resource type="Script" uid="uid://qnhof6augx64" path="res://scenes/enemies/enemy_pattern.gd" id="1_07vi6"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ijblm"]
-size = Vector2(33, 41)
+[ext_resource type="Texture2D" uid="uid://dxsdcv0ggcumj" path="res://Sprites/Gameplay/SpreadHelnierz.png" id="2_ijblm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xulii"]
-size = Vector2(34, 75)
+size = Vector2(52, 108)
 
 [node name="EnemyPattern" type="CharacterBody2D" unique_id=1439879865]
 script = ExtResource("1_07vi6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1096438629]
-position = Vector2(0, 1)
-scale = Vector2(1, 1.8414634)
-texture = SubResource("PlaceholderTexture2D_ijblm")
+position = Vector2(0, 12.5)
+texture = ExtResource("2_ijblm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534942019]
-position = Vector2(0, 1)
+position = Vector2(15, 12.5)
 shape = SubResource("RectangleShape2D_xulii")

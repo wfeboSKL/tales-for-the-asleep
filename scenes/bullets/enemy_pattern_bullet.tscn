@@ -1,19 +1,19 @@
-[gd_scene format=3 uid="uid://dkmejsujsyww8"]
+[gd_scene format=3 uid="uid://cec4i8dww234v"]
 
-[ext_resource type="Script" uid="uid://v4oalxarna8u" path="res://scenes/bullets/enemy_bullet.gd" id="1_d2qol"]
-[ext_resource type="Texture2D" uid="uid://c8br2avus2ymr" path="res://Sprites/Bullets/EnemyBaseBullet.png" id="2_ajmct"]
+[ext_resource type="Script" uid="uid://v4oalxarna8u" path="res://scenes/bullets/enemy_bullet.gd" id="1_yval3"]
+[ext_resource type="Texture2D" uid="uid://drqoi8mk0odcl" path="res://Sprites/Bullets/EnemyPatternBullet.png" id="2_yval3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx7rs"]
 size = Vector2(16.75, 11.75)
 
 [node name="EnemyBullet" type="Area2D" unique_id=529292232]
 collision_layer = 8
-script = ExtResource("1_d2qol")
+script = ExtResource("1_yval3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=560369656]
 position = Vector2(4.7683716e-07, -2.3841858e-07)
 scale = Vector2(0.75, 0.7083333)
-texture = ExtResource("2_ajmct")
+texture = ExtResource("2_yval3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214939418]
 shape = SubResource("RectangleShape2D_qx7rs")

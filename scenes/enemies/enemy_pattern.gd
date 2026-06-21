@@ -4,7 +4,7 @@ extends "res://scripts/enemies/enemy_base.gd"
 #Tiempo para el movimiento sinusoidal
 var time: float = 0.0
 #Pre-cargar balas
-const ENEMY_BULLET = preload("res://scenes/bullets/enemy_bullet.tscn")
+const ENEMY_BULLET = preload("res://scenes/bullets/enemy_pattern_bullet.tscn")
 var patterns_in_burst = 0
 const BURST_SIZE = 2
 #-- EXPORTAR VARIABLES PARA MOVIMIENTO ONDULATORIO --
@@ -78,3 +78,4 @@ func _ready():
 	super()  # ejecuta primero el _ready() del padre (busca jugador, etc.)
 	health = 7
 	xp_value = 25
+	

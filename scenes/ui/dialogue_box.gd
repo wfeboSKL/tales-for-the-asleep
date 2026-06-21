@@ -13,6 +13,18 @@ var character_sprites = {
 	"Desivinte:": preload("res://Sprites/Dialogue/DesivinteDialogue.png"),
 	"Morthalias:": preload("res://Sprites/Dialogue/MorthaliasDialogue.png")
 }
+
+func update_character_sprites():
+	if current_character_speaking == "Desivinte:":
+		# Desivinte habla: él se ilumina, el otro se oscurece
+		$LeftCharacter.modulate = Color.WHITE
+		$RightCharacter.modulate = Color(0.4, 0.4, 0.4)
+	else:
+		# Otro personaje habla: él se ilumina, Desivinte se oscurece
+		$RightCharacter.texture = character_sprites[current_character_speaking]
+		$RightCharacter.modulate = Color.WHITE
+		$LeftCharacter.modulate = Color(0.4, 0.4, 0.4)
+
 func _process(delta: float) -> void:
 	if not is_dialogue_active:
 		return
@@ -30,10 +42,13 @@ func show_current_line():
 	letter_timer = 0.0
 	$DialoguePanel/DialogueText.text = ""
 	$DialoguePanel/CharacterName.text = current_character_speaking
+	update_character_sprites()
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
+	$LeftCharacter.texture = character_sprites["Desivinte:"]
+	
 
 func start_dialogue(lines: Array):
 	dialogue_lines = lines
