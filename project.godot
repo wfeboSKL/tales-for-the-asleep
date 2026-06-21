@@ -21,6 +21,7 @@ GameData="*uid://o86t30ei3tf"
 
 [display]
 
+window/size/initial_position_type=0
 window/stretch/mode="canvas_items"
 
 [input]

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ktbnnh8fwh58"]
 
 [ext_resource type="Script" uid="uid://d3v58uhkqfjha" path="res://scenes/player/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://dayff4mjg7xii" path="res://Sprites/Desivinte.png" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://dayff4mjg7xii" path="res://Sprites/Gameplay/Desivinte.png" id="2_dovo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
-size = Vector2(11, 38.875)
+size = Vector2(11, 18)
 
 [node name="Player" type="CharacterBody2D" unique_id=480144190 groups=["Player"]]
 script = ExtResource("1_3vyb7")
@@ -15,5 +15,5 @@ scale = Vector2(0.81, 0.81)
 texture = ExtResource("2_dovo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377164170]
-position = Vector2(-8.5, 15.5625)
+position = Vector2(-8.5, 14)
 shape = SubResource("RectangleShape2D_u8vuu")

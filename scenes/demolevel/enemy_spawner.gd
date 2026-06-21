@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	
 	#Verificar en qué horda estamos según los enemigos eliminados
 	#Si se matan más de 40 enemigos y no es la horda 3, ahora es la horda 3
-	if GameData.enemies_killed >= 40 and GameData.current_wave != 3:
+	if GameData.enemies_killed >= 55 and GameData.current_wave != 3:
 		GameData.current_wave = 3
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Buen trabajo Desivinte!"],
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			["Morthalias:", "Hago lo que puedo..."]
 			])
 	#Si se matan más de 20 enemigos y es la horda 1, ahora es la horda 2
-	elif GameData.enemies_killed >= 32 and GameData.current_wave == 1:
+	elif GameData.enemies_killed >= 35 and GameData.current_wave == 1:
 		GameData.current_wave = 2
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Oh no!"],
@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 #-- FUNCIÓN DE SPAWN ENEMIGOS DE BÁSICO --
 func spawn_basic_enemy():
 	#Número aleatorio de enemigos entre 1 y 4
-	var count = randi_range(1, 4)
+	var count = randi_range(1, 5)
 	#Spawnear cada enemigo con posición aleatoria
 	for i in count:
 		var enemy = ENEMY.instantiate()

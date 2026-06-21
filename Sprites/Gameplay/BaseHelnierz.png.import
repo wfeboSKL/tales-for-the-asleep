@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baulef0lv7equ"
-path="res://.godot/imported/BaseBullet.png-eb603d78ad2e4ecf223c8f1462b8c09d.ctex"
+uid="uid://dmnymyyj1oo11"
+path="res://.godot/imported/BaseHelnierz.png-6fc9b6ef4bf99ace7566760ad880f6c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bullets/BaseBullet.png"
-dest_files=["res://.godot/imported/BaseBullet.png-eb603d78ad2e4ecf223c8f1462b8c09d.ctex"]
+source_file="res://Sprites/Gameplay/BaseHelnierz.png"
+dest_files=["res://.godot/imported/BaseHelnierz.png-6fc9b6ef4bf99ace7566760ad880f6c0.ctex"]
 
 [params]
 

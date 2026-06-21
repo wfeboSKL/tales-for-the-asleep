@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://biqtee13nxlpm"]
 
 [ext_resource type="Script" uid="uid://uw6y6ldd64lj" path="res://scenes/enemies/enemy_basic.gd" id="1_haaaj"]
-[ext_resource type="Texture2D" uid="uid://dmnymyyj1oo11" path="res://Sprites/image.png" id="2_rgfb6"]
+[ext_resource type="Texture2D" uid="uid://dmnymyyj1oo11" path="res://Sprites/Gameplay/BaseHelnierz.png" id="2_rgfb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
 size = Vector2(37, 83)

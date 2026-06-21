@@ -48,3 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 autowrap_mode = 2
+
+[node name="LeftCharacter" type="TextureRect" parent="." unique_id=1512001475]
+
+[node name="RightCharacter" type="TextureRect" parent="." unique_id=211518582]

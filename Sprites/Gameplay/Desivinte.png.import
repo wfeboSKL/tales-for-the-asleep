@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baulef0lv7equ"
-path="res://.godot/imported/BaseBullet.png-eb603d78ad2e4ecf223c8f1462b8c09d.ctex"
+uid="uid://dayff4mjg7xii"
+path="res://.godot/imported/Desivinte.png-a6c1a32d49bac646049d8ab320233168.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bullets/BaseBullet.png"
-dest_files=["res://.godot/imported/BaseBullet.png-eb603d78ad2e4ecf223c8f1462b8c09d.ctex"]
+source_file="res://Sprites/Gameplay/Desivinte.png"
+dest_files=["res://.godot/imported/Desivinte.png-a6c1a32d49bac646049d8ab320233168.ctex"]
 
 [params]
 

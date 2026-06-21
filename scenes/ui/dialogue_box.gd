@@ -1,5 +1,4 @@
 extends CanvasLayer
-
 var current_text = ""
 var current_line = 0
 var letter_timer = 0.0
@@ -9,6 +8,11 @@ var current_character_speaking = ""
 var letter_speed = 0.05
 var is_dialogue_active = false
 
+# -- DICCIONARIO DE SPRITES POR PERSONAJE --
+var character_sprites = {
+	"Desivinte:": preload("res://Sprites/Dialogue/DesivinteDialogue.png"),
+	"Morthalias:": preload("res://Sprites/Dialogue/MorthaliasDialogue.png")
+}
 func _process(delta: float) -> void:
 	if not is_dialogue_active:
 		return

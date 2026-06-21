@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmnymyyj1oo11"
-path="res://.godot/imported/image.png-ed6a75ea9515f8d0c2160b43f2faa6a9.ctex"
+uid="uid://b185g3e2cfr5d"
+path="res://.godot/imported/MorthaliasDialogue.png-17f500d8afb13c1d287647d87a00b8c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/image.png"
-dest_files=["res://.godot/imported/image.png-ed6a75ea9515f8d0c2160b43f2faa6a9.ctex"]
+source_file="res://Sprites/Dialogue/MorthaliasDialogue.png"
+dest_files=["res://.godot/imported/MorthaliasDialogue.png-17f500d8afb13c1d287647d87a00b8c5.ctex"]
 
 [params]
 

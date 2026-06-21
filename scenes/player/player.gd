@@ -24,7 +24,8 @@ var melee_cooldown = 0.0
 
 #Cuando el jugador esté en la escena, crear health_bar
 @onready var health_bar = get_parent().get_node("HUD/BottomBar/Sections/LeftSection/PlayerStats/HealthBar")
-@onready var score_label = get_parent().get_node("HUD/ScoreLabel")
+@onready var score_label = get_parent().get_node("HUD/BottomBar/Sections/CenterSection/VBoxContainer/ScoreLabel")
+@onready var kills_label = get_parent().get_node("HUD/BottomBar/Sections/LeftSection/PlayerStats/KillCountLabel")
 
 #Referencia a la barra de cooldown del disparo
 @onready var shoot_skill_bar = get_parent().get_node("HUD/BottomBar/Sections/RightSection/SkillBar/ShootSkill/CooldownBar")
@@ -85,6 +86,7 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(melee)
 		melee_cooldown = 10.0
 	score_label.text = "Puntaje: " + str(GameData.score)
+	kills_label.text = "Kill Count: " +str(GameData.enemies_killed)
 	#-- ACTUALIZAR HUD DE HABILIDADES --
 	#Actualizar barra de disparo (shoot_cooldown máximo es 0.1)
 	shoot_skill_bar.value = 1.0 - clamp(shoot_cooldown / 0.1, 0.0, 1.0)

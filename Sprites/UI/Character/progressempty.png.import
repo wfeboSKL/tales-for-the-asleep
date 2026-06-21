@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dayff4mjg7xii"
-path="res://.godot/imported/Desivinte.png-a091b5feb139fc1c1eee0e59e81fd2fa.ctex"
+uid="uid://0ugn1y07oj3t"
+path="res://.godot/imported/progressempty.png-c04b67182a156f89edc7bf74b79d685c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Desivinte.png"
-dest_files=["res://.godot/imported/Desivinte.png-a091b5feb139fc1c1eee0e59e81fd2fa.ctex"]
+source_file="res://Sprites/UI/Character/progressempty.png"
+dest_files=["res://.godot/imported/progressempty.png-c04b67182a156f89edc7bf74b79d685c.ctex"]
 
 [params]
 

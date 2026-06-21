@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://vv3otjijyyfi" path="res://scenes/demolevel/level.gd" id="1_d2nb1"]
 [ext_resource type="PackedScene" uid="uid://ktbnnh8fwh58" path="res://scenes/player/player.tscn" id="1_kcedh"]
-[ext_resource type="Texture2D" uid="uid://c7wp6ksf78dhe" path="res://Sprites/background/image.jpg" id="2_6k8mo"]
+[ext_resource type="Texture2D" uid="uid://c7wp6ksf78dhe" path="res://Sprites/Background/image.jpg" id="2_6k8mo"]
 [ext_resource type="Script" uid="uid://bcbddn7bdv641" path="res://scenes/demolevel/enemy_spawner.gd" id="3_d2nb1"]
-[ext_resource type="Texture2D" uid="uid://io51jwt07241" path="res://Sprites/background/ev1JYAAAABklEQVQDAPpSbo1Y9t7HAAAAAElFTkSuQmCC.png" id="3_vsapc"]
+[ext_resource type="Texture2D" uid="uid://io51jwt07241" path="res://Sprites/Background/ev1JYAAAABklEQVQDAPpSbo1Y9t7HAAAAAElFTkSuQmCC.png" id="3_vsapc"]
 [ext_resource type="Script" uid="uid://ckyrnlkddffwu" path="res://scenes/demolevel/hud.gd" id="5_ul7rm"]
+[ext_resource type="Texture2D" uid="uid://0ugn1y07oj3t" path="res://Sprites/UI/Character/progressempty.png" id="6_8remh"]
 [ext_resource type="PackedScene" uid="uid://ccvvxddts30js" path="res://scenes/ui/dialogue_box.tscn" id="6_s4sfo"]
+[ext_resource type="Texture2D" uid="uid://bk6uh13aioex8" path="res://Sprites/UI/Character/DesivinteIcon.png" id="6_vsapc"]
+[ext_resource type="Texture2D" uid="uid://bffdhfkwnck1h" path="res://Sprites/UI/Character/progressfull.png" id="7_um6hm"]
 [ext_resource type="Script" uid="uid://dbld1txf0rrot" path="res://scenes/demolevel/level_up_display.gd" id="8_6k8mo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcedh"]
@@ -82,16 +85,6 @@ collision_mask = 8
 [node name="HUD" type="CanvasLayer" parent="." unique_id=88502834]
 script = ExtResource("5_ul7rm")
 
-[node name="ScoreLabel" type="Label" parent="HUD" unique_id=2099791409]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -77.0
-offset_right = 91.0
-offset_bottom = -54.0
-grow_vertical = 0
-text = "Puntaje: 0.0"
-
 [node name="BottomBar" type="PanelContainer" parent="HUD" unique_id=585263769]
 custom_minimum_size = Vector2(0, 140)
 anchors_preset = 12
@@ -151,10 +144,59 @@ offset_right = 123.0
 offset_bottom = 23.0
 text = "Nivel: 1"
 
+[node name="KillCountLabel" type="Label" parent="HUD/BottomBar/Sections/LeftSection/PlayerStats" unique_id=458910730]
+layout_mode = 2
+text = "Kill Count: 0"
+
 [node name="CenterSection" type="PanelContainer" parent="HUD/BottomBar/Sections" unique_id=672738204]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/BottomBar/Sections/CenterSection" unique_id=1027386527]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HUD/BottomBar/Sections/CenterSection/VBoxContainer" unique_id=1878788712]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/BottomBar/Sections/CenterSection/VBoxContainer/Control" unique_id=209423048]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -48.5
+offset_right = 50.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 40.0
+fill_mode = 4
+texture_under = ExtResource("6_8remh")
+texture_progress = ExtResource("7_um6hm")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/BottomBar/Sections/CenterSection/VBoxContainer/Control" unique_id=1264460144]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -35.5
+offset_right = 37.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vsapc")
+
+[node name="ScoreLabel" type="Label" parent="HUD/BottomBar/Sections/CenterSection/VBoxContainer" unique_id=2099791409]
+layout_mode = 2
+text = "Puntaje: 0.0"
+horizontal_alignment = 1
 
 [node name="RightSection" type="PanelContainer" parent="HUD/BottomBar/Sections" unique_id=1319524404]
 layout_mode = 2
