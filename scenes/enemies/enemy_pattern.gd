@@ -4,7 +4,7 @@ extends "res://scripts/enemies/enemy_base.gd"
 #Tiempo para el movimiento sinusoidal
 var time: float = 0.0
 #Pre-cargar balas
-const ENEMY_BULLET = preload("res://scenes/bullets/enemy_pattern_bullet.tscn")
+const ENEMY_BULLET_PATTERN = preload("res://scenes/bullets/enemy_pattern_bullet.tscn")
 var patterns_in_burst = 0
 const BURST_SIZE = 2
 #-- EXPORTAR VARIABLES PARA MOVIMIENTO ONDULATORIO --
@@ -25,7 +25,7 @@ func shoot_pattern():
 	for i in num_bullets:
 		var angle = base_angle + (i - num_bullets / 2.0) * (spread_angle / num_bullets)
 		#Se instancia la bala
-		var bullet = ENEMY_BULLET.instantiate()
+		var bullet = ENEMY_BULLET_PATTERN.instantiate()
 		bullet.position = position
 		bullet.rotation = deg_to_rad(angle)
 		get_parent().add_child(bullet)

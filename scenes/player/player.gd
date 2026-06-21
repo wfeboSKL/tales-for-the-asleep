@@ -71,13 +71,7 @@ func _physics_process(delta: float) -> void:
 		$Sprite2D.visible = true
 	#Si "shoot" [k] es presionado y el cooldown está en 0 [o menos]:
 	if Input.is_action_pressed("shoot") and shoot_cooldown <= 0:
-		#La variable bala crea (o instancia) la escena BULLET
-		var bullet = BULLET.instantiate()
-		#La posición inicial de la bala será la misma que la del jugador
-		bullet.position = position
-		#Esto añade la bala como un nodo hijo al Player
-		get_parent().add_child(bullet)
-		#Se reinicia el cooldown de la bala para que en los siguientes frames se resta por delta
+		shoot_bullets()
 		shoot_cooldown = GameData.shoot_speed
 	melee_cooldown -= delta
 	if Input.is_action_just_pressed("melee") and melee_cooldown <= 0:
@@ -115,3 +109,10 @@ func take_damage(amount):
 			queue_free()
 		#Reiniciar temporizador de invencibilidad
 		invincibility_timer = 1.5
+func shoot_bullets():
+	var bullet_count = GameData.bullet_count
+	for i in bullet_count:
+		var bullet = BULLET.instantiate()
+		var offset_y = (i - (bullet_count - 1) / 2.0) * 18
+		bullet.position = position + Vector2(0, offset_y)
+		get_parent().add_child(bullet)
