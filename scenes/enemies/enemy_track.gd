@@ -7,7 +7,6 @@ var move_direction = -1
 var movement_cooldown = 0.0
 var shoot_pause = 0.0
 var target_y = 0.0
-var directions = [-1, 1]
 const SPEED = -70.0
 const SPEED_Y = 230.0
 #Se "precarga" la escena de la bala enemiga
@@ -31,7 +30,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, home_position.x, SPEED * delta)
 			if shoot_pause <= 0:
 				is_shooting = false
-				move_direction = directions.pick_random()
+				move_direction = [-1, 1].pick_random()
 				movement_cooldown = 1.7
 				target_y = randf_range(10, 225)
 		else:

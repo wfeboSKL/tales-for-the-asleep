@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED = 900
+const SPEED = 450
 var is_homing = true
 var homing_duration = 1.0
 var player = null

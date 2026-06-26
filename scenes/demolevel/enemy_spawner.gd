@@ -5,6 +5,7 @@ extends Node
 const ENEMY = preload("res://scenes/enemies/enemy_basic.tscn")
 const ENEMYPATTERN = preload("res://scenes/enemies/enemy_pattern.tscn")
 const ENEMYSENTRY = preload("res://scenes/enemies/enemy_sentry.tscn")
+const ENEMYTRACK = preload("res://scenes/enemies/enemy_track.tscn")
 #Variable que funciona como cooldown
 var spawn_timer = 0.0
 #Le dice al timer a qué número tendrá que reiniciarse una vez llegue a 0
@@ -25,7 +26,9 @@ func spawn_enemy():
 		3:
 			#Horda 3: jefe (por ahora igual que básico)
 			spawn_sentry_enemy()
-
+		4:
+			#Horda 3: jefe (por ahora igual que básico)
+			spawn_track_enemy()
 #-- DIVERSOS PROCESOS --
 func _process(delta: float) -> void:
 	if dialogue_box == null:
@@ -33,8 +36,20 @@ func _process(delta: float) -> void:
 
 	
 	#Verificar en qué horda estamos según los enemigos eliminados
-	#Si se matan más de 40 enemigos y no es la horda 3, ahora es la horda 3
-	if GameData.enemies_killed >= 75 and GameData.current_wave != 3:
+	if GameData.enemies_killed >= 105 and GameData.current_wave != 4:
+		GameData.current_wave = 4
+		dialogue_box.start_dialogue([
+			["Desivinte:", "Siento que estamos haciendo buen progreso"],
+			["Morthalias:", "Si..."],
+			["Morthalias:", "Jaja..."],
+			["Morthalias:", "Lo estás haciendo muy bien... Jaja..."],
+			["Desivinte:", "¿Qué te sucede?"],
+			["Morthalias:", "Solo..."],
+			["Morthalias:", "Solo ignoralo."],
+			["Morthalias:", "Tienes que estar listo para cuando llegue Hail the Priestess"],
+			["Desivinte:", "Cada vez estamos más cerca, pero a la vez solo parecen verse más y más Helnierz"],
+		])
+	elif GameData.enemies_killed >= 75 and GameData.current_wave == 2:
 		GameData.current_wave = 3
 		dialogue_box.start_dialogue([
 			["Morthalias:", "¡Buen trabajo Desivinte!"],
@@ -45,7 +60,6 @@ func _process(delta: float) -> void:
 			["Morthalias:", "Solo..."],
 			["Morthalias:", "Hago lo que puedo..."]
 			])
-	#Si se matan más de 20 enemigos y es la horda 1, ahora es la horda 2
 	elif GameData.enemies_killed >= 40 and GameData.current_wave == 1:
 		GameData.current_wave = 2
 		dialogue_box.start_dialogue([
@@ -105,6 +119,15 @@ func spawn_sentry_enemy():
 	var count = randi_range(1, 2)
 	for i in count:
 		var enemy = ENEMYSENTRY.instantiate()
+		# Posición X dentro de la pantalla (no desde la derecha, se queda fijo ahí)
+		enemy.position.x = randf_range(500,1100)
+		# Aparece arriba de la pantalla, fuera de vista
+		enemy.position.y = 0
+		get_parent().add_child(enemy)
+func spawn_track_enemy():
+	var count = randi_range(1, 2)
+	for i in count:
+		var enemy = ENEMYTRACK.instantiate()
 		# Posición X dentro de la pantalla (no desde la derecha, se queda fijo ahí)
 		enemy.position.x = randf_range(500,1100)
 		# Aparece arriba de la pantalla, fuera de vista
