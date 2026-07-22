@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8br2avus2ymr"
-path="res://.godot/imported/EnemyBaseBullet.png-2333652daf5a8523fd24ddf02c1fc521.ctex"
+path="res://.godot/imported/EnemyBaseBullet.png-c1e8572d6c5662daf7ba18dee9a6f747.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bullets/EnemyBaseBullet.png"
-dest_files=["res://.godot/imported/EnemyBaseBullet.png-2333652daf5a8523fd24ddf02c1fc521.ctex"]
+source_file="res://Sprites/bullets/EnemyBaseBullet.png"
+dest_files=["res://.godot/imported/EnemyBaseBullet.png-c1e8572d6c5662daf7ba18dee9a6f747.ctex"]
 
 [params]
 

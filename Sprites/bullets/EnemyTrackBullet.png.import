@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gosyqnpyl6ti"
-path="res://.godot/imported/EnemyTrackBullet.png-165492ed8c56cabe9b9b6a51d5d184e1.ctex"
+path="res://.godot/imported/EnemyTrackBullet.png-501fa0a0774ebbce578105dd40a3a740.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bullets/EnemyTrackBullet.png"
-dest_files=["res://.godot/imported/EnemyTrackBullet.png-165492ed8c56cabe9b9b6a51d5d184e1.ctex"]
+source_file="res://Sprites/bullets/EnemyTrackBullet.png"
+dest_files=["res://.godot/imported/EnemyTrackBullet.png-501fa0a0774ebbce578105dd40a3a740.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@ extends CharacterBody2D
 # Vida por defecto (los hijos la sobrescriben si necesitan otro valor)
 var health = 3
 # XP que otorga al morir (los hijos la sobrescriben)
-var xp_value = 10
+var xp_value = 99
 # Cooldown de disparo, cada hijo lo resetea a su propio ritmo
 var shoot_cooldown = 0.0
 # Referencia al jugador

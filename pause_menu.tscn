@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dv34hutn86xxj"]
+
+[ext_resource type="Script" uid="uid://cpqpq0t3f7ma4" path="res://pause_menu.gd" id="1_hdmo1"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=933023996]
+script = ExtResource("1_hdmo1")
+
+[node name="Control" type="Control" parent="." unique_id=569324532]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Overlay" type="ColorRect" parent="Control" unique_id=431028697]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=826791392]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer" unique_id=1193280019]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Control/PanelContainer/VBoxContainer" unique_id=969206735]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="Control/PanelContainer/VBoxContainer" unique_id=1084278206]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/VBoxContainer" unique_id=33275682]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Control/PanelContainer/VBoxContainer" unique_id=54451025]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="Control/PanelContainer/VBoxContainer" unique_id=357988621]
+layout_mode = 2

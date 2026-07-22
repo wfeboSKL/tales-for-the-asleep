@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://vv3otjijyyfi" path="res://scenes/demolevel/level.gd" id="1_d2nb1"]
 [ext_resource type="PackedScene" uid="uid://ktbnnh8fwh58" path="res://scenes/player/player.tscn" id="1_kcedh"]
-[ext_resource type="Texture2D" uid="uid://c7wp6ksf78dhe" path="res://Sprites/Background/image.jpg" id="2_6k8mo"]
+[ext_resource type="Texture2D" uid="uid://c7wp6ksf78dhe" path="res://Sprites/background/image.jpg" id="2_6k8mo"]
 [ext_resource type="Script" uid="uid://bcbddn7bdv641" path="res://scenes/demolevel/enemy_spawner.gd" id="3_d2nb1"]
-[ext_resource type="Texture2D" uid="uid://io51jwt07241" path="res://Sprites/Background/ev1JYAAAABklEQVQDAPpSbo1Y9t7HAAAAAElFTkSuQmCC.png" id="3_vsapc"]
+[ext_resource type="Texture2D" uid="uid://io51jwt07241" path="res://Sprites/background/ev1JYAAAABklEQVQDAPpSbo1Y9t7HAAAAAElFTkSuQmCC.png" id="3_vsapc"]
 [ext_resource type="Script" uid="uid://ckyrnlkddffwu" path="res://scenes/demolevel/hud.gd" id="5_ul7rm"]
 [ext_resource type="Texture2D" uid="uid://0ugn1y07oj3t" path="res://Sprites/UI/Character/progressempty.png" id="6_8remh"]
 [ext_resource type="PackedScene" uid="uid://ccvvxddts30js" path="res://scenes/ui/dialogue_box.tscn" id="6_s4sfo"]
